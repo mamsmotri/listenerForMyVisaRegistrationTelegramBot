@@ -82,6 +82,7 @@ def grime_legend():
 
 def open_driver():
     from selenium import webdriver
+    import time
     from selenium.webdriver.common.keys import Keys
 
     chrome = webdriver.Chrome()
@@ -94,12 +95,33 @@ def open_driver():
     chrome.find_element_by_name("ctl00$cp1$btnNewAppointment").click()
 
     chrome.find_element_by_name('ctl00$cp1$ddCitizenship').click()
+    time.sleep(1)
     chrome.find_element_by_xpath("//*[contains(text(), 'Russia (Россия)')]").click()
 
     chrome.find_element_by_name('ctl00$cp1$ddEmbassy').click()
+    time.sleep(1)
     chrome.find_element_by_xpath("//*[contains(text(), 'Russia (Россия) - Jekatěrinburg')]").click()
 
     chrome.find_element_by_name('ctl00$cp1$ddVisaType').click()
+    time.sleep(1)
     chrome.find_element_by_xpath("//*[contains(text(), 'Long-term residence permit')]").click()
 
 
+
+open_driver()
+#
+# import cv2.cv as cv
+# import tesseract
+# gray = cv.LoadImage('CAPTCHA/BotDetectCaptcha (1).jpg', cv.CV_LOAD_IMAGE_GRAYSCALE)
+# cv.Threshold(gray, gray, 231, 255, cv.CV_THRESH_BINARY)
+# api = tesseract.TessBaseAPI()
+# api.Init(".","eng",tesseract.OEM_DEFAULT)
+# api.SetVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyz")
+# api.SetPageSegMode(tesseract.PSM_SINGLE_WORD)
+# tesseract.SetCvImage(gray,api)
+# print (api.GetUTF8Text())
+
+# -----
+# from captcha_decoder import decoder
+#
+# print(decoder('CAPTCHA/BotDetectCaptcha (7).jpg'))
